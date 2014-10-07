@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/root/Downloads/build/dropbox'
-let g:netrw_dirhist_2='/root/.ssh'
-let g:netrw_dirhist_3='/root/Documents/linky'
-let g:netrw_dirhist_4='/root/Documents/wpchanger/events'
-let g:netrw_dirhist_5='/root/Documents/wpchanger/handlers'
