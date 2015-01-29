@@ -119,7 +119,6 @@ noremap <silent> <C-j> <c-w>j
 let NERDTreeIgnore = ['\.pyc$']
 autocmd vimenter * NERDTree
 
-
 " runtime plugin/dragvisuals.vim
 " 
 " vmap  <expr>  <LEFT>   DVB_Drag('left')
