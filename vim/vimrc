@@ -25,12 +25,16 @@ if has("autocmd")
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
     autocmd FileType html setlocal ts=4 sts=4 sw=4 noexpandtab
+    autocmd FileType jinja setlocal ts=4 sts=4 sw=4 expandtab
     autocmd FileType css setlocal ts=4 sts=4 sw=4 noexpandtab
     autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
 
     " set unknown extensions to filetype
     autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
     autocmd BufNewFile,BufRead *.jsx setfiletype javascript
+
+    " if file is .vimrc re-load vimrc
+    autocmd! BufWritePost .vimrc source $MYVIMRC
 endif
 
 " disable backwards compatible Vi mode.
@@ -55,18 +59,10 @@ set undolevels=1000
 set listchars=tab:▸\ ,nbsp:_,trail:.,eol:¬
 set list
 
-" set highlight of extra whitespaces
-autocmd ColorScheme * highlight ExtraWhitespace guifg=gray
-au InsertLeave * match ExtraWhitespace /\s\+$/
-
-" color scheme
-colorscheme koehler
 set ruler
 set number
 set background=dark
 set backspace=indent,eol,start
-autocmd FileType html setlocal shiftwidth=4 tabstop=4 noexpandtab
-
 
 " quicker actions
 set timeoutlen=500
@@ -80,11 +76,11 @@ let g:pymode_lint_unmodified = 1
 let g:pymode_lint_ignore = "E501"
 let g:pymode_lint_on_fly = 1
 " rope settings
-let g:pymode_rope = 1
+let g:pymode_rope = 0
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope_regenerate_on_write = 0
-let g:pymode_rope_completion = 1
-let g:pymode_rope_complete_on_dot = 1
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
 let g:pymode_rope_completion_bind = '<C-Space>'
 
 set enc=utf-8
@@ -101,7 +97,7 @@ set laststatus=2
 let g:Powerline_symbols = 'fancy'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "murmur"
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 
 " clipboard on F7
 set clipboard=unnamedplus
@@ -126,6 +122,21 @@ nmap <Leader>m :bn<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" set moving between windows to ctrl+arrows
+nnoremap <silent> <C-Right> <c-w>l
+nnoremap <silent> <C-Left> <c-w>h
+nnoremap <silent> <C-Up> <c-w>k
+nnoremap <silent> <C-Down> <c-w>j
+
+" set moving between windows to ctrl+hjkl
+noremap <silent> <C-l> <c-w>l
+noremap <silent> <C-h> <c-w>h
+noremap <silent> <C-k> <c-w>k
+noremap <silent> <C-j> <c-w>j
+
 " autorun nerdtree
 let NERDTreeIgnore = ['\.pyc$']
-autocmd vimenter * NERDTree
+autocmd VimEnter * NERDTree
+
+" color scheme
+colorscheme lulu
