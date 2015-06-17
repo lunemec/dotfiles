@@ -98,26 +98,26 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1:comm
+bindsym $mod+1 workspace 1:dev
 bindsym $mod+2 workspace 2:web
 bindsym $mod+3 workspace 3:dev
 bindsym $mod+4 workspace 4:dev
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
+bindsym $mod+8 workspace 8:comm
 bindsym $mod+9 workspace 9:music
 bindsym $mod+0 workspace 10:misc
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1:comm
+bindsym $mod+Shift+1 move container to workspace 1:dev
 bindsym $mod+Shift+2 move container to workspace 2:web
 bindsym $mod+Shift+3 move container to workspace 3:dev
 bindsym $mod+Shift+4 move container to workspace 4:dev
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+8 move container to workspace 8:comm
 bindsym $mod+Shift+9 move container to workspace 9:music
 bindsym $mod+Shift+0 move container to workspace 10:misc
 
@@ -127,7 +127,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+n exec "i3-sensible-terminal -e vim ~/torrentsync/note.txt"
+bindsym $mod+n exec "gnome-terminal -e vim ~/torrentsync/note.txt"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -182,15 +182,18 @@ bar {
 #workspace 10:misc output LVDS1
 #workspace 2:web output HDMI1
 
-assign [class="Thunderbird"] 1:comm
-assign [class="Pidgin"] 10:misc
-assign [class="Skype"] 10:misc
+assign [class="Thunderbird"] 8:comm
+assign [class="Pidgin"] 8:comm
+assign [class="Skype"] 8:comm
+assign [class="KeePass2"] 10:misc
 assign [class="Firefox"] 2:web
+assign [class="bitcoin-qt"] 10:misc
 
 for_window [class="urxvt"] border 1pixel
+for_window [class="Gnome-terminal"] border 1pixel
 for_window [class="InputOutput"] floating
 
-bindsym $mod+v exec urxvt -e vim
+bindsym $mod+v exec gnome-terminal -e vim
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +5%"
 bindsym XF86AudioLowerVolume exec "pactl set-sink-mute 0 false ; pactl -- set-sink-volume 0 -5%"
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
