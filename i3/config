@@ -24,10 +24,10 @@ font xft: tamsynmod 8
 
 # colors
 #class				border	backgr.	text
-client.focused               	#171717 #171717 #a6e22e
+client.focused              #171717 #171717 #a6e22e
 client.focused_inactive		#2e3436 #2e3436 #b9c8d1
-client.unfocused		#2e3436 #2e3436 #999999
-client.urgent			#cd989a #cd989a #2e3436
+client.unfocused		    #2e3436 #2e3436 #999999
+client.urgent			    #cd989a #cd989a #2e3436
 
 client.background			#121212
 
@@ -189,8 +189,6 @@ assign [class="KeePass2"] 10:misc
 assign [class="Firefox"] 2:web
 assign [class="bitcoin-qt"] 10:misc
 
-for_window [class="urxvt"] border 1pixel
-for_window [class="Gnome-terminal"] border 1pixel
 for_window [class="InputOutput"] floating
 
 bindsym $mod+v exec gnome-terminal -e vim
@@ -201,3 +199,6 @@ bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 exec nm-applet
 exec /home/lulu/syncthing-linux-amd64-v0.11.5/syncthing -gui-address=0.0.0.0:8080 -no-browser -home="/home/lulu/.config/syncthing"
 exec pidgin
+exec thunderbird
+exec firefox
+exec keepass
